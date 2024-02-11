@@ -41,8 +41,12 @@ public class ParseIntegers {
         }
 
 
-        logger.info(String.format("Just words: %s", justWords));
-        logger.info(String.format("Sum is %d", sum));
+        if (!justWords.isEmpty()) {
+            logger.info("Just words: " + justWords);
+        }
+        if (sum > 0) {
+            logger.info(String.format("Sum is %d", sum));
+        }
 
 
 
