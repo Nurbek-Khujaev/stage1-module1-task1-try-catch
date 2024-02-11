@@ -15,14 +15,24 @@ public class ParseIntegers {
                     "JDK 17 has released on 14 September 2021 with 10 new features, 2 feature removals and 2 feature deprecations."
                             .split(" "));
 
+
     public static void main(String[] args) {
         Iterator<String> words = WORDS.iterator();
         int sum = 0;
         String justWords = "";
+        int number;
         while (words.hasNext()) {
             String next = words.next();
-            int number = Integer.parseInt(next);
-            // todo: complete it
+
+            try {
+                number = Integer.parseInt(next);
+                sum += number;
+
+            } catch (NumberFormatException ignored) {
+                justWords += next + " ";
+
+            }
+
         }
         System.out.println("Sum is " + sum);
         System.out.println("Just words:" + justWords);
