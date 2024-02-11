@@ -12,7 +12,6 @@ import java.util.logging.Logger;
 
 public class ParseIntegers {
 
-    private static final Logger logger = Logger.getLogger(ParseIntegers.class.getName());
 
 
     private static final List<String> WORDS =
@@ -24,29 +23,25 @@ public class ParseIntegers {
     public static void main(String[] args) {
         Iterator<String> words = WORDS.iterator();
         int sum = 0;
+        StringBuilder justWordsBuilder = new StringBuilder();
+
         String justWords = "";
-        int number;
         while (words.hasNext()) {
             String next = words.next();
 
             try {
-                number = Integer.parseInt(next);
+                int number = Integer.parseInt(next);
                 sum += number;
-
-            } catch (NumberFormatException ignored) {
-                justWords += next + " ";
-
+            } catch (NumberFormatException e) {
+                justWordsBuilder.append(next).append(" ");
             }
 
         }
 
 
-        if (!justWords.isEmpty()) {
-            logger.info("Just words: " + justWords);
-        }
-        if (sum > 0) {
-            logger.info(String.format("Sum is %d", sum));
-        }
+        justWords = justWordsBuilder.toString().trim();
+        System.out.println("Sum is " + sum);
+        System.out.println("Just words: " + justWords);
 
 
 
